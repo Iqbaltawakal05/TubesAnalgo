@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card.highlight {
+    border: 1px solid #00e676;
+}
+
+.inline {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #546e7a;
+    color: white;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #78909c;
+}
+
+button.primary {
+    background: #00e676;
+    color: #000;
+}
+
+button.primary:hover {
+    background: #1aff8c;
+}
+
+.status {
+    margin-top: 12px;
+    font-weight: bold;
+    color: #00e676;
+}
+
+.history {
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.box {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.mode-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-switch button {
+    flex: 1;
+    background: #455a64;
+}
+
+.mode-switch button.active {
+    background: #00e676;
+    color: black;
+}

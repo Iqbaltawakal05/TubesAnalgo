@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubes Analgo - Mastermind AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Simulasi Game Mastermind</h1>
+        <p class="subtitle">Greedy + Minimax Strategy</p>
+    
+        <!-- Kunjaw -->
+        <div class="card">
+            <h3>1. Tentukan Kunci Jawaban</h3>
+            <input type="text" id="kunci" value="1234" maxlength="4" />
+        </div>
+    
+        <!-- Pilih Mode Permainan -->
+        <div class="card">
+            <h3>2. Mode Permainan</h3>
+            <div class="mode-switch">
+                <button id="btnManual" class="active" onclick="setMode('manual')">Manual</button>
+                <button id="btnAI" onclick="setMode('ai')">Komputer</button>
+            </div>
+        </div>
+        
+        <!-- Mode Manual -->
+        <div class="card" id="manualSection">
+            <h3>Mode Manusia (Coba Tebak Sendiri)</h3>
+            <p>Bisakah kamu memecahkan kunci jawabannya.</p>
+            <div class="inline">
+                <input type="text" id="guess" maxlength="4" placeholder="Masukkan tebakan">
+                <button onclick="handleManualGuess()">Cek</button>
+            </div>
+        </div>
+        
+        <!-- Mode Komputer -->
+        <div class="card highlight" id="aiSection" style="display:none;">
+            <h3>Mode Simulasi (Greedy + Minimax)</h3>
+            <p>Biarkan komputer memecahkan kuncinya menggunakan Greedy + Minimax.</p>
+            <button class="primary" onclick="startSimulation()">Mulai Simulasi</button>
+            <div id="statusPermainan" class="status"></div>
+        </div>
+    
+        <!-- Riwayat -->
+        <div class="card">
+            <h3>Riwayat Tebakan:</h3>
+            <div id="jawaban" class="history"></div>
+            <div id="pesanMenang" class="info"></div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+
+</html>
