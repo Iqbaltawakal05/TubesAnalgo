@@ -47,11 +47,14 @@ function getFeedback(secret, guess) {
 
 // Menghapus kode yang tidak mungkin dari daftar (Pruning)
 function pruneCodes(candidates, lastGuess, lastFeedback) {
-    return candidates.filter((code) => {
+    let kandidates = candidates.filter((code) => {
 
         let simFeedback = getFeedback(code, lastGuess);
         return JSON.stringify(simFeedback) === JSON.stringify(lastFeedback);
     });
+    console.log(`kandidates: ${kandidates}`);
+    console.log(`Jumlah kandidates: ${kandidates.length}`);
+    return kandidates
 }
 
 // Mencari tebakan yang meminimalkan sisa kemungkinan terburuk
@@ -66,19 +69,22 @@ function getMinimaxGuess(candidates) {
     // search space agar tidak nge lag
     let searchSpace =
         candidates.length > 500 ? candidates.slice(0, 500) : candidates;
-
+    let attempts = 0;
 
     // fungsi minimax
     for (let guess of searchSpace) {
+        attempts++
+        console.log(`attempts: ${attempts}, guess: ${guess}`);
         let scores = {};
-
+        console.log(`jumlah dari search space: ${searchSpace.length}`);
+        console.log(`awal min worst case: ${minWorstCase}`);
         // menghitung sisa kemungkinan
         // {"['tomato', 'tomato', 'tomato', 'tomato']": 900}
         for (let solution of candidates) {
             let feedback = JSON.stringify(getFeedback(solution, guess));
             scores[feedback] = (scores[feedback] || 0) + 1;
         }
-
+        
         // menghitung max atau worst case
         let maxSisa = 0;
         for (let key in scores) {
@@ -86,14 +92,19 @@ function getMinimaxGuess(candidates) {
                 maxSisa = scores[key];
             }
         }
+        console.log(`(nilai tampung frekuensi terbesar) maxSisa ${maxSisa}`);
 
         // menghitung min worst case
         if (maxSisa < minWorstCase) {
             minWorstCase = maxSisa;
             bestGuess = guess;
         }
+        console.log(`akhir min worst case: ${minWorstCase}, dengan tebakan: ${bestGuess}`);
+        console.log('\n')
+
     }
 
+    // console.log(`tebakan paling bagus: ${bestGuess}`);
     return bestGuess;
 }
 
@@ -178,7 +189,7 @@ async function startSimulation() {
     let attempts = 0;
     // status permainan
     let solved = false;
-
+    console.log(`percobaan ke-${attempts}: ${currentGuess}`);
     // logika utama permainan
     while (!solved && possibleCodes.length > 0) {
         // tambah langkah karena sudah mulai

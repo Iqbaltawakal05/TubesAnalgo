@@ -16,7 +16,24 @@
         <!-- Kunjaw -->
         <div class="card">
             <h3>1. Tentukan Kunci Jawaban</h3>
-            <input type="text" id="kunci" value="1234" maxlength="4" />
+            <div class="eye-container">
+                <input type="text" id="kunci" value="1234" maxlength="4" />
+                <span class="eye" onclick="toggleEye()">&#128065;</span>
+            </div>
+
+            <script>
+                function toggleEye() {
+                    let eye = document.querySelector(".eye");
+                    let input = document.querySelector("#kunci");
+                    if (eye.classList.contains("active")) {
+                        eye.classList.remove("active");
+                        input.type = "text";
+                    } else {
+                        eye.classList.add("active");
+                        input.type = "password";
+                    }
+                }
+            </script>
         </div>
     
         <!-- Pilih Mode Permainan -->

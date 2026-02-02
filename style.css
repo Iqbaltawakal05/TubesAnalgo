@@ -123,3 +123,7 @@ button.primary:hover {
     background: #00e676;
     color: black;
 }
+
+.eye {
+    cursor: pointer;
+}
